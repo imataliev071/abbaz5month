@@ -41,3 +41,20 @@ class MovieReviewSerializer(serializers.ModelSerializer):
             return total_stars / num_reviews
         else:
             return 0.0
+
+
+class DirectorValidateSerializer(serializers.Serializer):
+    name = serializers.CharField(min_length=1, max_length=100)
+
+
+class MovieValidateSerializer(serializers.Serializer):
+    title = serializers.CharField(min_length=1, max_length=100)
+    description = serializers.CharField(min_length=3)
+    duration = serializers.FloatField()
+    director_id = serializers.IntegerField()
+
+
+class ReviewValidateSerializer(serializers.Serializer):
+    text = serializers.CharField(min_length=1)
+    movie_id = serializers.IntegerField()
+    stars = serializers.IntegerField(min_value=1, max_value=5)
