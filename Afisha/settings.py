@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'movie_app',
     'rest_framework',
+    'rest_framework.authtoken',
+    'users'
 ]
 
 QUERYCOUNT = {
@@ -49,7 +51,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'querycount.middleware.QueryCountMiddleware',
 ]
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+    ]
+}
 ROOT_URLCONF = 'Afisha.urls'
 
 TEMPLATES = [

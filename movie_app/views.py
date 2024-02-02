@@ -30,7 +30,10 @@ def director_detail_api_view(request, id):
 
 @api_view(['GET', 'POST'])
 def director_list_api_view(request):
-    directors = Director.objects.all()
+    print(request.user)
+    directors = (Director.objects
+                 .prefetch_related('reviews')
+                 .select_related('movies').all())
     if request.method == 'GET':
         data = DirectorSerializer(directors, many=True).data
         return Response(data=data)
