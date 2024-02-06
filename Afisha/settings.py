@@ -31,6 +31,7 @@ INSTALLED_APPS = [
 
 QUERYCOUNT = {
     'THRESHOLDS': {
+        'PAGE_SIZE': 2,
         'MEDIUM': 50,
         'HIGH': 200,
         'MIN_TIME_TO_LOG': 0,
@@ -53,8 +54,9 @@ MIDDLEWARE = [
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication'
-    ]
+        'rest_framework.authentication.TokenAuthentication',
+
+]
 }
 ROOT_URLCONF = 'Afisha.urls'
 
