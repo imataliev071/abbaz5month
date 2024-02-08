@@ -1,4 +1,6 @@
+import os
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -7,12 +9,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-m5ww!=ni6!&g2)mzgr+mab2li9(-(v-=69&fu*l9l=)lpq7u2^'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ.get('DEBUG') == 'on' else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -26,7 +28,8 @@ INSTALLED_APPS = [
     'movie_app',
     'rest_framework',
     'rest_framework.authtoken',
-    'users'
+    'users',
+    'drf_yasg'
 ]
 
 QUERYCOUNT = {
@@ -85,8 +88,8 @@ WSGI_APPLICATION = 'Afisha.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_afisha',
-        'USER': 'db_afisha_user',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': 'db_afisha_users',
         'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': '5432'
