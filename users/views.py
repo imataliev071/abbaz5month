@@ -76,3 +76,4 @@ class ConfirmAPIView(CreateAPIView):
 #         return Response(data={"message": "User successfully confirmed."}, status=200)
 #     except ConfirmationCode.DoesNotExist:
 #         return Response(data={"error": "Invalid confirmation code."}, status=400)
+
